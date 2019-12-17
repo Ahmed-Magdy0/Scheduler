@@ -1,0 +1,248 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Tue Nov 26 13:15:40 2019
+
+OUTPUT FILE NAME:   <Scheduler.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 000007c5
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000009c8  0003f638  R  X
+  SRAM                  20000000   00008000  00000240  00007dc0  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000009c8   000009c8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    0000071c   0000071c    r-x .text
+  00000988    00000988    00000008   00000008    r-- .const
+  00000990    00000990    00000038   00000038    r-- .cinit
+20000000    20000000    00000240   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000040   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    0000071c     
+                  0000026c    00000158     Port.obj (.text)
+                  000003c4    00000134     Scheduler.obj (.text)
+                  000004f8    000000dc     Dio.obj (.text)
+                  000005d4    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00000670    0000007a                                   : memset_t2.obj (.text)
+                  000006ea    00000002     --HOLE-- [fill = 0]
+                  000006ec    0000006c                                   : autoinit.obj (.text)
+                  00000758    0000006a                                   : copy_decompress_rle.obj (.text)
+                  000007c2    00000002     --HOLE-- [fill = 0]
+                  000007c4    00000050                                   : boot.obj (.text)
+                  00000814    0000004c                                   : cpy_tbl.obj (.text)
+                  00000860    00000044                                   : exit.obj (.text)
+                  000008a4    00000040     Systick.obj (.text)
+                  000008e4    00000032     Led.obj (.text)
+                  00000916    00000002     --HOLE-- [fill = 0]
+                  00000918    00000018     App.obj (.text)
+                  00000930    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000948    00000014                                   : _lock.obj (.text)
+                  0000095c    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  0000096a    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000976    00000008     main.obj (.text)
+                  0000097e    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000984    00000004                                   : pre_init.obj (.text)
+
+.const     0    00000988    00000008     
+                  00000988    00000006     Dio_PBcfg.obj (.const)
+                  0000098e    00000001     App.obj (.const)
+                  0000098f    00000001     Port_PBcfg.obj (.const)
+
+.cinit     0    00000990    00000038     
+                  00000990    00000027     (.cinit..data.load) [load image, compression = rle]
+                  000009b7    00000001     --HOLE-- [fill = 0]
+                  000009b8    00000008     (__TI_handler_table)
+                  000009c0    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000200     --HOLE--
+
+.data      0    20000200    00000040     UNINITIALIZED
+                  20000200    00000018     App.obj (.data)
+                  20000218    00000008     Scheduler.obj (.data)
+                  20000220    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000228    00000008                                   : exit.obj (.data)
+                  20000230    00000004     Dio.obj (.data)
+                  20000234    00000004     Port.obj (.data)
+                  20000238    00000004     Systick.obj (.data)
+                  2000023c    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    20000200    00000000     UNINITIALIZED
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000009c0 records: 1, size/record: 8, table size: 8
+	.data: load addr=00000990, load size=00000027 bytes, run addr=20000200, run size=00000040 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000009b8 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00000861  C$$EXIT                 
+00000988  Dio_Configuration       
+00000509  Dio_FlipChannel         
+000004f9  Dio_Init                
+00000903  Led_Blue_Toggle         
+0000090d  Led_Green_Toggle        
+000008f9  Led_Red_Toggle          
+000008e5  Led_Toggle              
+0000098e  Num_Of_Tasks            
+0000098f  Port_Configuration      
+0000026d  Port_Init               
+0000096b  ResetISR                
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+000003ef  Scheduler               
+000003e5  Scheduler_NewTimerTick  
+000003c5  Scheduler_Start         
+000008b9  Systick_GetCallBack_Func
+000008c9  Systick_Handler         
+000008a5  Systick_Start           
+00000919  Task_Init               
+20000200  Tasks                   
+20000200  __STACK_END             
+00000200  __STACK_SIZE            
+20000200  __STACK_TOP             
+000009c0  __TI_CINIT_Base         
+000009c8  __TI_CINIT_Limit        
+000009b8  __TI_Handler_Table_Base 
+000009c0  __TI_Handler_Table_Limit
+000006ed  __TI_auto_init          
+20000228  __TI_cleanup_ptr        
+0000095d  __TI_decompress_none    
+0000097f  __TI_decompress_rle24   
+2000022c  __TI_dtors_ptr          
+00000000  __TI_static_base__      
+00000671  __aeabi_memclr          
+00000671  __aeabi_memclr4         
+00000671  __aeabi_memclr8         
+000005d5  __aeabi_memcpy          
+000005d5  __aeabi_memcpy4         
+000005d5  __aeabi_memcpy8         
+00000673  __aeabi_memset          
+00000673  __aeabi_memset4         
+00000673  __aeabi_memset8         
+ffffffff  __binit__               
+ffffffff  __c_args__              
+20000000  __stack                 
+00000931  _args_main              
+000007c5  _c_int00                
+20000220  _lock                   
+00000957  _nop                    
+0000094f  _register_lock          
+00000949  _register_unlock        
+00000985  _system_pre_init        
+20000224  _unlock                 
+00000865  abort                   
+ffffffff  binit                   
+00000815  copy_in                 
+0000086d  exit                    
+00000000  g_pfnVectors            
+00000977  main                    
+2000023c  main_func_sp            
+000005d5  memcpy                  
+00000679  memset                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000000  g_pfnVectors            
+00000200  __STACK_SIZE            
+0000026d  Port_Init               
+000003c5  Scheduler_Start         
+000003e5  Scheduler_NewTimerTick  
+000003ef  Scheduler               
+000004f9  Dio_Init                
+00000509  Dio_FlipChannel         
+000005d5  __aeabi_memcpy          
+000005d5  __aeabi_memcpy4         
+000005d5  __aeabi_memcpy8         
+000005d5  memcpy                  
+00000671  __aeabi_memclr          
+00000671  __aeabi_memclr4         
+00000671  __aeabi_memclr8         
+00000673  __aeabi_memset          
+00000673  __aeabi_memset4         
+00000673  __aeabi_memset8         
+00000679  memset                  
+000006ed  __TI_auto_init          
+000007c5  _c_int00                
+00000815  copy_in                 
+00000861  C$$EXIT                 
+00000865  abort                   
+0000086d  exit                    
+000008a5  Systick_Start           
+000008b9  Systick_GetCallBack_Func
+000008c9  Systick_Handler         
+000008e5  Led_Toggle              
+000008f9  Led_Red_Toggle          
+00000903  Led_Blue_Toggle         
+0000090d  Led_Green_Toggle        
+00000919  Task_Init               
+00000931  _args_main              
+00000949  _register_unlock        
+0000094f  _register_lock          
+00000957  _nop                    
+0000095d  __TI_decompress_none    
+0000096b  ResetISR                
+00000977  main                    
+0000097f  __TI_decompress_rle24   
+00000985  _system_pre_init        
+00000988  Dio_Configuration       
+0000098e  Num_Of_Tasks            
+0000098f  Port_Configuration      
+000009b8  __TI_Handler_Table_Base 
+000009c0  __TI_CINIT_Base         
+000009c0  __TI_Handler_Table_Limit
+000009c8  __TI_CINIT_Limit        
+20000000  __stack                 
+20000200  Tasks                   
+20000200  __STACK_END             
+20000200  __STACK_TOP             
+20000220  _lock                   
+20000224  _unlock                 
+20000228  __TI_cleanup_ptr        
+2000022c  __TI_dtors_ptr          
+2000023c  main_func_sp            
+ffffffff  __binit__               
+ffffffff  __c_args__              
+ffffffff  binit                   
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+
+[64 symbols]
